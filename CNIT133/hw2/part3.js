@@ -33,8 +33,8 @@ function processPage() {
     More than zero: ${positives}<br>
     <button>Click to fade numbers</button><br><br>
     `
-
     result.innerHTML = resultHtml;
+    
     $(document).ready(function () {
         $("button").click(function () {
             $("#result").fadeTo("slow", 0.15);

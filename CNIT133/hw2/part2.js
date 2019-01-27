@@ -1,10 +1,6 @@
-var sum, average, product, smallest, largest;
-var first, second, third;
-
-
-var resultHtml = "";
-
 function processPage() {
+    let sum, average, product, smallest, largest;
+    let first, second, third;
     let resultHtml = "";
     let result = document.getElementById("result");
 
