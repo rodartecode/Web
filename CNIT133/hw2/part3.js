@@ -40,9 +40,6 @@ function processPage() {
             $("#result").fadeTo("slow", 0.15);
         });
     });
-
-
-
 }
 
 function clearPage() {
