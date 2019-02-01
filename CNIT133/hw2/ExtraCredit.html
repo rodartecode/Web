@@ -15,15 +15,15 @@
             });
         })    
     </script>
-    <script> 
-            $(document).ready(function(){
-              $("#flip").click(function(){
+    <script>
+        $(document).ready(function () {
+            $("#flip").click(function () {
                 $("#result").slideToggle("slow");
-              });
             });
-            </script>
+        });
+    </script>
 
-<style> 
+    <style>
         #result, #flip {
           padding: 5px;
           text-align: center;
@@ -55,7 +55,11 @@
             </form>
 
             <button id="flip">Click here to show converstion table!!</button>
+
             <section id="result">
+                <h4>If you haven't entered an amount yet, do it now.</h4>
+                <h2>The foreign exchange rates on June 6, 2017:</h2><br>
+
                 <table>
                     <tr>
                         <th>Currency</th>
@@ -88,8 +92,6 @@
                         <td class="mex"></td>
                     </tr>
                 </table>
-
-
             </section>
         </section>
     </div>
