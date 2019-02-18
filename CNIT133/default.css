@@ -212,30 +212,41 @@ body {
   margin-left: 1em;
 }
 
-.error_show{
+.error_show {
   display: inline-block;
   position: absolute;
-	color: red;
-	margin-left: 1em;
+  color: red;
+  margin-left: 1em;
 }
 
-input[type="number"].invalid, textarea.invalid{
-	border: 2px solid red;
+input[type="number"].invalid, textarea.invalid {
+  border: 2px solid red;
 }
 
-input[type="number"].valid, textarea.valid{
-	border: 2px solid green;
+input[type="number"].valid, textarea.valid {
+  border: 2px solid green;
+}
+
+#result {
+  display: none;
+  position: relative;
+  margin: auto;
+  padding: 5px;
+  text-align: center;
+  background-color: #333;
+  border: solid 1px #c3c3c3;
+  width: 50%;
+  font-size: 4rem;
 }
 
 /* Typography
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  header h1 {
-    text-align: center;
-  }
 
+header h1 {
+  text-align: center;
+}
 
-
-  h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 2rem;
   font-weight: 300;
