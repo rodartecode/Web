@@ -53,19 +53,9 @@ function initialize() {
 }
 
 function confirmYes() {
-	let header = document.getElementById("quiz-header");
 	let input = document.getElementById("input-box");
-	let text = document.getElementById("quiz-text");
-
 	input.removeChild(input.childNodes[2]);
 	input.removeChild(input.childNodes[2]);
-
-	let number1 = getRndInteger(min, level);
-	let number2 = getRndInteger(min, level);
-	answer = parseInt(number1 * number2);
-
-	header.textContent = `Welcome to level ${getLevel(level)}`;
-	text.textContent = `What is ${number1} times ${number2}?`;
 
 	let numForm = document.createElement("input");
 	numForm.type = "number";
@@ -75,11 +65,13 @@ function confirmYes() {
 
 	let but3 = document.createElement("input");
 	but3.type = "button";
-    but3.value = "Submit";
+	but3.value = "Submit";
 	but3.addEventListener("click", guess);
 
 	input.appendChild(numForm);
 	input.appendChild(but3);
+
+	newLevel();
 }
 
 function confirmNo() {}
@@ -89,22 +81,100 @@ function guess() {
 		console.log("correct");
 		correctAudio.play();
 		level++;
-
-		let header = document.getElementById("quiz-header");
-		let text = document.getElementById("quiz-text");
-		let form = document.getElementById("guess");
-
-		let number1 = getRndInteger(min, level);
-		let number2 = getRndInteger(min, level);
-		answer = parseInt(number1 * number2);
-
-		header.textContent = `Welcome to level ${getLevel(level)}`;
-		text.textContent = `What is ${number1} times ${number2}?`;
-		form.value = "0";
+		if (document.getElementById("wrong-box")) {
+			let input = document.getElementById("input-box");
+			input.removeChild(input.childNodes[4]);
+		}
+		playAgain();
 	} else {
 		console.log("incorrect");
 		wrongAudio.play();
+		if (!document.getElementById("wrong-box")) {
+			let input = document.getElementById("input-box");
+
+			let wrongBox = document.createElement("aside");
+			wrongBox.classList.add("center-box");
+			wrongBox.id = "wrong-box";
+			wrongBox.textContent = "Sorry, that's not right.";
+
+			input.append(wrongBox);
+		}
 	}
+}
+
+function playAgain() {
+	let text = document.getElementById("quiz-text");
+	text.textContent = "That's right!";
+
+	let input = document.getElementById("input-box");
+	let par = document.createElement("p");
+	parText = document.createTextNode("Try the next level?");
+	par.appendChild(parText);
+	par.id = "result-text";
+
+	let but1 = document.createElement("input");
+	but1.type = "button";
+	but1.value = "Yes";
+	but1.addEventListener("click", againYes);
+
+	let but2 = document.createElement("input");
+	but2.type = "button";
+	but2.value = "No";
+	but2.addEventListener("click", againNo);
+
+	input.removeChild(input.childNodes[2]);
+	input.removeChild(input.childNodes[2]);
+	input.appendChild(par);
+	input.appendChild(but1);
+	input.appendChild(but2);
+}
+
+function againYes() {
+	let input = document.getElementById("input-box");
+	input.removeChild(input.childNodes[2]);
+	input.removeChild(input.childNodes[2]);
+	input.removeChild(input.childNodes[2]);
+
+	let numForm = document.createElement("input");
+	numForm.type = "number";
+	numForm.id = "guess";
+	numForm.addEventListener("click", m);
+	numForm.defaultValue = "0";
+
+	let but3 = document.createElement("input");
+	but3.type = "button";
+	but3.value = "Submit";
+	but3.addEventListener("click", guess);
+
+	input.appendChild(numForm);
+	input.appendChild(but3);
+
+	newLevel();
+}
+
+function againNo() {
+	let header = document.getElementById("quiz-header");
+	header.textContent = "Thanks for playing!";
+	let text = document.getElementById("quiz-text");
+	text.textContent = "";
+	let input = document.getElementById("input-box");
+	input.removeChild(input.childNodes[2]);
+	input.removeChild(input.childNodes[2]);
+	input.removeChild(input.childNodes[2]);
+}
+
+function newLevel() {
+	let header = document.getElementById("quiz-header");
+	let text = document.getElementById("quiz-text");
+	let form = document.getElementById("guess");
+
+	let number1 = getRndInteger(min, level);
+	let number2 = getRndInteger(min, level);
+	answer = parseInt(number1 * number2);
+
+	header.textContent = `Welcome to level ${getLevel(level)}`;
+	text.textContent = `What is ${number1} times ${number2}?`;
+	form.value = "0";
 }
 
 function getRndInteger(min, max) {
@@ -121,5 +191,5 @@ function m() {
 	console.log("m");
 	let el = document.getElementById("guess");
 
-	if ( el.defaultValue == el.value ) el.value = "";
+	if (el.defaultValue == el.value) el.value = "";
 }
