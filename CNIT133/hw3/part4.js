@@ -70,7 +70,8 @@ function confirmYes() {
 	let numForm = document.createElement("input");
 	numForm.type = "number";
 	numForm.id = "guess";
-	numForm.value = "0";
+	numForm.addEventListener("click", m);
+	numForm.defaultValue = "0";
 
 	let but3 = document.createElement("input");
 	but3.type = "button";
@@ -114,4 +115,11 @@ function getRndInteger(min, max) {
 	}
 
 	return num;
+}
+
+function m() {
+	console.log("m");
+	let el = document.getElementById("guess");
+
+	if ( el.defaultValue == el.value ) el.value = "";
 }
