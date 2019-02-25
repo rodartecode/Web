@@ -90,6 +90,9 @@ function guess() {
 		console.log("incorrect");
 		wrongAudio.play();
 		if (!document.getElementById("wrong-box")) {
+			let numForm = document.getElementById("guess");
+			numForm.value = 0;
+
 			let input = document.getElementById("input-box");
 
 			let wrongBox = document.createElement("aside");
@@ -98,6 +101,9 @@ function guess() {
 			wrongBox.textContent = "Sorry, that's not right.";
 
 			input.append(wrongBox);
+		} else {
+			let numForm = document.getElementById("guess");
+			numForm.value = 0;
 		}
 	}
 }
