@@ -206,6 +206,7 @@ body {
   justify-content: center;
   max-width: 100%;
   text-align: center;
+  margin: auto;
 }
 
 .input-box {
