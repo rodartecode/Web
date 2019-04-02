@@ -25,11 +25,15 @@ console.log("Bproduct: " + bProduct);
 console.log("Bsum = " + bSum);
 
 function initialize() {
+	
+
+}
+
+function initTab1() {
 	let tab1a = document.getElementById("p10");
 	let tab1b = document.getElementById("p11");
 	let tab1c = document.getElementById("p12");
 	let tab1d = document.getElementById("p13");
-	let tab2 = document.getElementById("p2");
 	let tab3 = document.getElementById("p3");
 
 	tab1a.textContent = `The product of 5 * 8 * 11 * 14 * 17 * 20 is ${product}`;
@@ -37,6 +41,19 @@ function initialize() {
 	
 	tab1c.textContent = `The product of 3 * 7 * 11 * 15 * 19 * 23 * 27 * 31 is ${bProduct}`;
 	tab1d.textContent = `The sum of 3 * 7 * 11 * 15 * 19 * 23 * 27 * 31 is ${bSum}`;
+}
+
+function initTab2() {
+	let tab2 = document.getElementById("tabs-2");
+
+	for (let i = 0; i < 10; i++) {
+		;
+	}
+
+}
+
+function initTab3() {
+	let tab3 = document.getElementById("tabs-3");
 
 }
 
