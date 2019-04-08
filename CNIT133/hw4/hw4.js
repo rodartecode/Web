@@ -27,6 +27,22 @@ function initialize() {
 	initTab1();
 	initTab2();
 	initTab3();
+
+	$(document).ready(function() {
+		console.log("ready");
+
+		$("#size").on("input", function() {
+			console.log("in size");
+			let input = $(this);
+			let val = input.val();
+
+			if (val <= 10 && val >= 2) {
+				input.removeClass("invalid").addClass("valid");
+			} else {
+				input.removeClass("valid").addClass("invalid");
+			}
+		});
+	});
 }
 
 function initTab1() {
@@ -45,7 +61,7 @@ function initTab1() {
 function initTab2() {
 	let tab2 = document.getElementById("tabs-2");
 	let arr = [];
-	let rates = [0.05, 0.06, 0.07, 0.08, 0.09, 0.10];
+	let rates = [0.05, 0.06, 0.07, 0.08, 0.09, 0.1];
 	let sec = document.createElement("section");
 
 	for (let i = 0; i < 6; i++) {
@@ -92,14 +108,36 @@ function initTab2() {
 function initTab3() {
 	let tab3 = document.getElementById("tabs-3");
 	let sec = document.createElement("section");
+	sec.classList.add("center-box");
 
 	let form = document.createElement("form");
 	let input = document.createElement("input");
 	let label = document.createElement("label");
+	let submit = document.createElement("input");
+	let reset = document.createElement("input");
+	let result = document.createElement("article");
+	result.classList.add("center-box");
+
+	form.setAttribute("action", "javascript:void(0);");
+	form.setAttribute("onsubmit", "eval()");
 	input.setAttribute("type", "number");
 	input.setAttribute("id", "size");
-	label. setAttribute("for", "size");
+	input.setAttribute("defaultValue", "2");
+	label.setAttribute("for", "size");
+	submit.setAttribute("type", "submit");
+	reset.setAttribute("type", "reset");
+	reset.setAttribute("onclick", "resetTab()");
+	result.setAttribute("id", "result");
+	label.textContent = "Enter a size between 2-10:";
 
+	form.appendChild(label);
+	form.appendChild(input);
+	form.appendChild(submit);
+	form.appendChild(reset);
+
+	sec.appendChild(form);
+	sec.appendChild(result);
+	tab3.appendChild(sec);
 }
 
 function compound(years, rate) {
@@ -110,4 +148,79 @@ function compound(years, rate) {
 	console.log(pow);
 	let a = p * pow;
 	return a.toFixed(2);
+}
+
+function eval() {
+	console.log("EVAL");
+
+	let size = document.getElementById("size").value;
+	console.log(size);
+	let sizeEl = document.getElementById("size");
+	let result = document.getElementById("result");
+	let box = document.getElementById("box");
+	if (box === null) {
+		box = document.createElement("pre");
+		box.setAttribute("id", "box")
+	}
+	else {
+		box.innerHTML = "";
+	}
+	let error_free = true;
+	valid = sizeEl.classList.contains("valid");
+	if (!valid) {
+		console.log("invalid");
+		error_free = false;
+	}
+
+	if (!error_free) {
+		console.log("double invalid");
+		event.preventDefault();
+	} else {
+		console.log("valid");
+		result.style.display = "block";
+		for (let i = 0; i < 3; i++) {
+			if (i == 0) {
+				console.log("1");
+				for (let j = 0; j < size; j++) {
+					console.log("1");
+					box.innerHTML += `* `;
+				}
+				box.innerHTML += '\n';
+			} else if (i == 2) {
+				console.log("3");
+				for (let k = 0; k < size; k++) {
+					console.log("3");
+					box.innerHTML += `* `;
+				}
+				box.innerHTML += '\n';
+			} else {
+				console.log("2");
+				for (let m = 0; m < size - 2; m++) {
+					box.innerHTML += `* `;
+					for (let l = 0; l < size - 2; l++) {
+						console.log("2");
+						box.innerHTML += `  `;
+					}
+					box.innerHTML += `* `;
+					box.innerHTML += '\n';
+
+				}
+			}
+		}
+	}
+	result.appendChild(box);
+}
+
+function resetTab() {
+	console.log("reset");
+	let size = document.getElementById("size").value;
+	let result = document.getElementById("result");
+	console.log(size);
+	let box = document.getElementById("box");
+	if (box !== null) {
+		console.log("reset");
+		box.innerHTML = "";
+	}
+	result.style.display = "none";
+	size = "";
 }

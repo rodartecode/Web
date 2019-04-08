@@ -4,6 +4,7 @@ $(document).ready(function() {
 	});
 
 	$("#form_avg").on("input", function() {
+		console.log("huh");
 		let input = $(this);
 		let val = $(this).val();
 
