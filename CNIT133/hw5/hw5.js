@@ -59,11 +59,11 @@ function initTab1() {
     check3.setAttribute("name", "check[]");
 
     option1.value = "Option 1";
-    option1.setAttribute("name[]", "option");
+    option1.setAttribute("name", "option[]");
     option2.value = "Option 2";
-    option2.setAttribute("name[]", "option");
+    option2.setAttribute("name", "option[]");
     option3.value = "Option 3";
-    option3.setAttribute("name[]", "option");
+    option3.setAttribute("name", "option[]");
 
     submit.setAttribute("type", "submit");
 
