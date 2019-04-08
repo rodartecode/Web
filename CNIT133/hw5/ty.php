@@ -4,5 +4,6 @@
   $text = htmlspecialchars($_POST['text']);
   $radio = htmlspecialchars($_POST['radio']);
   $check  = htmlspecialchars($_POST['check']);
-  echo  $text, ' ', $radio;
+  $option = htmlspecialchars($_POST['option']);
+  echo 'text: ' $text, ' ', $radio, ' ', $check, ' ', $option;
 ?>
