@@ -50,18 +50,20 @@ function initTab1() {
 
     check1.setAttribute("type", "checkbox");
     check1.setAttribute("value", "Checkbox 1");
-    check1.setAttribute("name", "check");
+    check1.setAttribute("name", "check[]");
     check2.setAttribute("type", "checkbox");
     check2.setAttribute("value", "Checkbox 2");
-    check2.setAttribute("name", "check");
+    check2.setAttribute("name", "check[]");
     check3.setAttribute("type", "checkbox");
     check3.setAttribute("value", "Checkbox 3");
-    check3.setAttribute("name", "check");
+    check3.setAttribute("name", "check[]");
 
-    select.name = "option";
     option1.value = "Option 1";
+    option1.setAttribute("name[]", "option");
     option2.value = "Option 2";
+    option2.setAttribute("name[]", "option");
     option3.value = "Option 3";
+    option3.setAttribute("name[]", "option");
 
     submit.setAttribute("type", "submit");
 
