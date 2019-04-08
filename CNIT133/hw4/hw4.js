@@ -124,11 +124,11 @@ function initTab3() {
 	input.setAttribute("id", "size");
 	input.setAttribute("defaultValue", "2");
 	label.setAttribute("for", "size");
+	label.textContent = "Enter a size between 2-10:";
 	submit.setAttribute("type", "submit");
 	reset.setAttribute("type", "reset");
 	reset.setAttribute("onclick", "resetTab()");
 	result.setAttribute("id", "result");
-	label.textContent = "Enter a size between 2-10:";
 
 	form.appendChild(label);
 	form.appendChild(input);
