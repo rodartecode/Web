@@ -44,20 +44,21 @@ function initTab1() {
     radio1.setAttribute("name", "radio");
     radio2.setAttribute("name", "radio");
     radio3.setAttribute("name", "radio");
-    radio1.setAttribute("value", "Option 1");
-    radio2.setAttribute("value", "Option 2");
-    radio3.setAttribute("value", "Option 3");
+    radio1.setAttribute("value", "Radio 1");
+    radio2.setAttribute("value", "Radio 2");
+    radio3.setAttribute("value", "Radio 3");
 
     check1.setAttribute("type", "checkbox");
-    check1.setAttribute("value", "Option 1");
+    check1.setAttribute("value", "Checkbox 1");
     check1.setAttribute("name", "check");
     check2.setAttribute("type", "checkbox");
-    check2.setAttribute("value", "Option 2");
+    check2.setAttribute("value", "Checkbox 2");
     check2.setAttribute("name", "check");
     check3.setAttribute("type", "checkbox");
-    check3.setAttribute("value", "Option 3");
+    check3.setAttribute("value", "Checkbox 3");
     check3.setAttribute("name", "check");
 
+    select.name = "option";
     option1.value = "Option 1";
     option2.value = "Option 2";
     option3.value = "Option 3";
