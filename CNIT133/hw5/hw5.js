@@ -66,18 +66,26 @@ function initTab1() {
 	check3.setAttribute("value", "Checkbox 3");
 	check3.setAttribute("name", "check");
 
+	let option0 = document.createElement("option");
+	option0.value = "";
+	option0.setAttribute("name", "option");
 	option1.value = "Option 1";
 	option1.setAttribute("name", "option");
 	option2.value = "Option 2";
 	option2.setAttribute("name", "option");
 	option3.value = "Option 3";
 	option3.setAttribute("name", "option");
+	select.setAttribute("name", "optionList");
+	select.id = "optionList";
 
 	submit.setAttribute("type", "submit");
 
 	reset.setAttribute("type", "reset");
 	reset.setAttribute("onclick", "resetTab()");
 
+	option0.innerHTML += "Choose an option";
+	option0.classList.add = "required";
+	select.appendChild(option0);
 	option1.innerHTML += "Option 1";
 	select.appendChild(option1);
 	option2.innerHTML += "Option 2";
@@ -138,6 +146,10 @@ function initTab2() {
 	let select2 = document.createElement("select");
 	select2.setAttribute("name", "chessList");
 
+	let option0 = document.createElement("option");
+	option0.classList.add = "required";
+	option0.value = "";
+	option0.innerHTML = "Choose an option";
 	let option1 = document.createElement("option");
 	option1.value = "https://www.chess.com";
 	option1.innerHTML = "Chess.com";
@@ -157,6 +169,7 @@ function initTab2() {
 	let clone2 = option2.cloneNode(true);
 	let clone3 = option3.cloneNode(true);
 
+	select1.appendChild(option0);
 	select1.appendChild(option1);
 	select1.appendChild(option2);
 	select1.appendChild(option3);
@@ -229,9 +242,27 @@ function resetTab() {
 }
 
 function eval() {
-	if (document.getElementById("text").value == "") return false;
-	if ($("input[name=radio]:checked").length > 0) return false;
-	if ($("input[name=check]:checked").length > 0) return false;
+	let list = document.getElementById("optionList");
+	if (document.getElementById("text").value == "") {
+		please();
+		return false;
+	}
+	if ($("input[name=radio]:checked").length == 0) {
+		please();
+		return false;
+	}
+	if ($("input[name=check]:checked").length == 0) {
+		please();
+		return false;
+	}
+	if (list.selectedIndex == 0) {
+		please();
+		return false;
+	}
+}
+
+function please() {
+	alert("Please fill out all the form options. It's very important.");
 }
 
 function goToPage(aForm) {
