@@ -58,20 +58,20 @@ function initTab1() {
 
 	check1.setAttribute("type", "checkbox");
 	check1.setAttribute("value", "Checkbox 1");
-	check1.setAttribute("name", "check[]");
+	check1.setAttribute("name", "check");
 	check2.setAttribute("type", "checkbox");
 	check2.setAttribute("value", "Checkbox 2");
-	check2.setAttribute("name", "check[]");
+	check2.setAttribute("name", "check");
 	check3.setAttribute("type", "checkbox");
 	check3.setAttribute("value", "Checkbox 3");
-	check3.setAttribute("name", "check[]");
+	check3.setAttribute("name", "check");
 
 	option1.value = "Option 1";
-	option1.setAttribute("name", "option[]");
+	option1.setAttribute("name", "option");
 	option2.value = "Option 2";
-	option2.setAttribute("name", "option[]");
+	option2.setAttribute("name", "option");
 	option3.value = "Option 3";
-	option3.setAttribute("name", "option[]");
+	option3.setAttribute("name", "option");
 
 	submit.setAttribute("type", "submit");
 
@@ -188,8 +188,14 @@ function initTab3() {
 	let label = document.createElement("label");
 	let input = document.createElement("input");
 	let submit = document.createElement("input");
+	let result = document.createElement("article");
+
+	result.id = "result";
+	result.classList.add("center-box");
 
 	header.textContent = "Learn some state facts!";
+
+	form.action = "javascript:void(0);";
 
 	label.textContent = "Enter a state: ";
 	label.setAttribute("for", "search");
@@ -198,19 +204,35 @@ function initTab3() {
 	input.name = "search";
 	input.id = "search";
 
-    submit.type = "submit";
-    submit.onclick = "processPage()";
+	submit.type = "submit";
+	submit.onclick = function() {
+		pageProcess();
+	};
+	console.log(submit.onclick);
+	console.log(submit.type);
 
 	sec.appendChild(header);
 	form.appendChild(label);
 	form.appendChild(input);
 	form.appendChild(submit);
 	sec.appendChild(form);
+	sec.appendChild(result);
 
 	tab3.appendChild(sec);
 }
 
-function resetTab() {}
+function resetTab() {
+	document.getElementById("text").value = "";
+	$("input[name=radio]").attr("checked", false);
+	$("input[name=check]").attr("checked", false);
+
+}
+
+function eval() {
+	if (document.getElementById("text").value == "") return false;
+	if ($("input[name=radio]:checked").length > 0) return false;
+	if ($("input[name=check]:checked").length > 0) return false;
+}
 
 function goToPage(aForm) {
 	console.log(aForm);
@@ -218,14 +240,18 @@ function goToPage(aForm) {
 	window.location = destination;
 }
 
-function processPage() {
-    let search = document.getElementById("search").value;
-
-    if (isValid(search)) {
-        
-    } else {
-
-    } 
+function pageProcess() {
+	let search = document.getElementById("search").value;
+	let result = document.getElementById("result");
+	console.log(search);
+	if (isValid(search)) {
+		console.log("valid");
+		result.innerHTML = getStateInfo(getStateIndex(search));
+		result.style.display = "block";
+	} else {
+		result.innerHTML = "Sorry, I can't find that! Try another search phrase.";
+		result.style.display = "block";
+	}
 }
 
 function isValid(t) {
@@ -234,6 +260,7 @@ function isValid(t) {
 			if (t.toUpperCase() === stateArr[i][j].toUpperCase()) return true;
 		}
 	}
+	console.log("invalid");
 }
 
 function getStateIndex(t) {
@@ -263,9 +290,9 @@ function getStateInfo(index) {
 	par += `The capital is ${cap}`;
 	par += "<br />";
 	par += `The state population is ${pop}`;
-    par += "</p>";
-    
-    returnHTML += par;
+	par += "</p>";
 
-    return returnHTML;
+	returnHTML += par;
+
+	return returnHTML;
 }
