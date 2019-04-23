@@ -23,22 +23,65 @@ function initialize() {
 	today.appendChild(list);
 
 	let pdtOffset = date.getTimezoneOffset();
-	let edtOffset = pdtOffset - 180;
+	let pdtHours = pdtOffset / 60;
+	let edtOffset = (pdtOffset - 180) / 60;
 
-	timezones.textContent = `The offset between PDT and UTC is ${pdtOffset} minutes. The offset between EDT and UTC is ${edtOffset} minutes`;
+	timezones.textContent = `The offset between PDT and UTC is ${pdtHours} hours. The offset between EDT and UTC is ${edtOffset} hours`;
+}
+
+function searchText() {
+	let textStuff = document.getElementById("text-box").value;
+	console.log(textStuff);
+	var searchChar = document.getElementById("search").value;
+	let resultStuff = document.getElementById("result-box");
+	let searchCount = 0;
+
+	for (let i = 0; i < textStuff.length; i++) {
+		if (textStuff.charAt(i) == searchChar) {
+			console.log("match");
+			searchCount++;
+		}
+	}
+
+	if (searchCount == 0) {
+		localStorage.setItem("searchChar", searchChar);
+		window.open(
+			"hw6/oops.html",
+			"_blank",
+			"width=300,height=100,toolbar=no,scrollbars=no,resizable=no,menubar=no,left=100,top=300"
+		);
+		resultStuff.value = "";
+	} else if (searchCount == 1) {
+		let resultText = document.getElementById("result-box");
+		resultText.value = `The char was found ${searchCount} time`;
+	} else {
+		resultStuff.value = `The char was found ${searchCount} times`;
+	}
+}
+
+function getSearchChar() {
+	let oops = document.getElementById("oops");
+	let oopsie = document.createElement("h6");
+	oopsie.innerHTML = `The search char was: ${localStorage.getItem("searchChar")}`;
+	oops.appendChild(oopsie);
 }
 
 function splitString() {
 	let phone = document.getElementById("phone").value;
-	let splitter = /[\s\(\)\-]/;
-	let splitter2 = [")", "(", "-", " "];
-	let splitter3 = splitter2.join("|");
+	let splitter = /[\(\)\-]/;
 	let numArr = phone.split(splitter);
 	let filtered = numArr.filter(function(el) {
 		return el != "";
 	});
 	console.log(numArr);
 	console.log(filtered);
+	let area = document.getElementById("area");
+	let num = document.getElementById("sevenNum");
+
+	area.value = filtered[0];
+	let numString = `${filtered[1]}` + `${filtered[2]}`;
+	console.log(numString);
+	num.value = numString;
 }
 
 function valNum() {

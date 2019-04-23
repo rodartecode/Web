@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<meta name="description" content="Coming soon" />
+		<meta name="description" content="Homework 6" />
 		<link rel="stylesheet" href="default.css" />
 		<link
 			rel="stylesheet"
@@ -46,7 +46,7 @@
 			#phoneResult #area {
 				width: 10rem;
 			}
-			#num {
+			#sevenNum {
 				width: auto;
 			}
 		</style>
@@ -88,7 +88,7 @@
 			<div id="tabs-2">
 				<section class="center-box">
 					<h1>Search a string!</h1>
-					<form>
+					<form action="javascript:void(0);">
 						<label for="text-box">Enter some text:</label>
 						<textarea
 							rows="5"
@@ -101,14 +101,14 @@
 						<label for="search">Enter a text character to search for:</label>
 						<input type="text" id="search" class="search" size="2" />
 						<br />
-						<input type="submit" />
+						<input type="submit" onclick="searchText()" />
 						<input type="reset" /> <br />
 						<br />
 						<textarea
 							rows="2"
 							cols="50"
-							name="text-box"
-							id="text-box"
+							name="result-box"
+							id="result-box"
 							placeholder="This will display the search results"
 							style="color:black;"
 							readonly
@@ -133,8 +133,8 @@
 							<input type="reset" value="Reset" /> <br />
 							<br />
 							<div id="phoneResult">
-								<input type="number" name="area" id="area" size="4" readonly />
-								<input type="number" name="num" id="num" size="10" />
+								<input type="text" name="area" id="area" size="4" readonly />
+								<input type="text" name="sevenNum" id="sevenNum" size="10" readonly />
 							</div>
 						</form>
 					</article>
