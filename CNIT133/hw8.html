@@ -18,7 +18,7 @@
 							document.getElementById("hint").innerHTML = this.responseText;
 						}
 					};
-					xmlhttp.open("GET", "/~jrodarte/CNIT133/gethint.php?q=" + str, true);
+					xmlhttp.open("GET", "getHint.php?q=" + str, true);
 					xmlhttp.send();
 				}
 			}
